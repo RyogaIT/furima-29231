@@ -7,8 +7,8 @@ README修正１
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
 | nickname | string | null: false |
-| email    | date | null: false |
-| password | date   | null: false |
+| email    | string | null: false |
+| password | string   | null: false |
 | firstname| string   | null: false |
 | lastname | string   | null: false |
 | firstnamekana| string   | null: false |
@@ -29,14 +29,12 @@ README修正１
 | ------   | ------ | ----------- |
 | image    | date | null: false   | ## active_storage テーブル #画像用
 | product  | string | null: false |
-| category | date | null: false |
-| status   | date | null: false   |
-| deliverycost | date | null: false |
-| deliveryarea | date | null: false |
-| deliverydates | date | null: false |
-| price     | date | null: false |
-| fee | date | null: false |
-| profit | date | null: false |
+| category | integer | null: false |
+| status   | integer | null: false   |
+| deliverycost | integer | null: false |
+| deliveryarea | integer | null: false |
+| deliverydates | integer | null: false |
+| price     | integer | null: false |
 | exhibior | string | null: false |
 
 ### Association
@@ -93,19 +91,13 @@ README修正１
 ## buyers_address テーブル
 | Column   | Type   | Options     |
 |---------------------------------|
-| address    | references | null: false, foreign_key: true |
+| zipnumber    | imteger | null: false   | 
+| prefecture  | date | null: false |  ##active＿hash使用
+| city | date | null: false |
+| ddress   | date | null: false   |
+| buildingname | string | null: false |
+| phonenumber | integer | null: false |
 
-| image    | date | null: false   | ## active_storage テーブル #画像用
-| product  | string | null: false |
-| category | date | null: false |
-| status   | date | null: false   |
-| deliverycost | date | null: false |
-| deliveryarea | date | null: false |
-| deliverydays | date | null: false |
-| price     | date | null: false |
-| fee | date | null: false |
-| profit | date | null: false |
-| exhibior | date | null: false |
 
 ### Association
 
