@@ -18,7 +18,7 @@ README修正１
 ### Association
 
 - has_many :items
-- has_many :items
+- has_one : buyer
 - has_many :comments
 
 
@@ -69,21 +69,23 @@ README修正１
 
 - has_one : user
 - has_one : item
+- has_one : buyers_address
 
 
 ## buyers_address テーブル
 | Column   | Type   | Options     |
 |---------------------------------|
-| zipnumber    | imteger | null: false   | 
-| prefecture  | date | null: false |  ##active＿hash使用
+| zipnumber    | integer | null: false   | 
+| prefecture  | date | null: false |
 | city | date | null: false |
-| ddress   | date | null: false   |
+| address   | date | null: false   |
 | buildingname | string | null: false |
 | phonenumber | integer | null: false |
+| buyer   | references | null: false, foreign_key: true |
 
 
 ### Association
 
-- has_one : buyers
+- has_one : buyer
 
 
