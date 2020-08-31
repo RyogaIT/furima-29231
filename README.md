@@ -18,7 +18,7 @@ README修正１
 ### Association
 
 - has_many :items
-- has_many :rooms, through: item_users
+- has_many :items
 - has_many :comments
 
 
@@ -27,8 +27,8 @@ README修正１
 
 | Column   | Type   | Options     |
 | ------   | ------ | ----------- |
-| image    | date | null: false   | ## active_storage テーブル #画像用
-| product  | string | null: false |
+| productname  | string | null: false |
+| producdetail  | string | null: false |
 | category | integer | null: false |
 | status   | integer | null: false   |
 | deliverycost | integer | null: false |
@@ -39,26 +39,9 @@ README修正１
 
 ### Association
 
-- has_many :item_users
-- has_many :users, through: item_users
+- belongs_to :users
+- has_one : buyers
 - has_many :comments
-
-
-
-
-
-## item_users テーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| item   | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :item
-
 
 
 
