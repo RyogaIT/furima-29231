@@ -18,7 +18,7 @@ README修正１
 ### Association
 
 - has_many :items
-- has_one : buyer
+- has_many : buyers
 - has_many :comments
 
 
@@ -48,6 +48,7 @@ README修正１
 ## comments テーブル
 | Column   | Type   | Options     |
 ------------------------------ |
+| content| string     |                                |
 | user   | references | null: false, foreign_key: true |
 | item   | references | null: false, foreign_key: true |
 
@@ -67,7 +68,7 @@ README修正１
 
 ### Association
 
-- has_one : user
+- belong_to : user
 - has_one : item
 - has_one : buyers_address
 
