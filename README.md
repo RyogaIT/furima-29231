@@ -35,7 +35,7 @@ README修正１
 | deliveryarea | integer | null: false |
 | deliverydates | integer | null: false |
 | price     | integer | null: false |
-| exhibior | string | null: false |
+| buyer | reference | null: false, foreign_key: true |
 
 ### Association
 
@@ -76,13 +76,12 @@ README修正１
 ## buyers_address テーブル
 | Column   | Type   | Options     |
 |---------------------------------|
-| zipnumber    | integer | null: false   | 
-| prefecture  | date | null: false |
-| city | date | null: false |
-| address   | date | null: false   |
+| zipnumber    | string | null: false   | 
+| city         | string | null: false |
+| address      | date | null: false   |
 | buildingname | string | null: false |
-| phonenumber | integer | null: false |
-| buyer   | references | null: false, foreign_key: true |
+| phonenumber  | integer | null: false |
+| buyer        | references | null: false, foreign_key: true |
 
 
 ### Association
