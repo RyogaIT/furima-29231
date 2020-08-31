@@ -28,7 +28,7 @@ README修正１
 | Column   | Type   | Options     |
 | ------   | ------ | ----------- |
 | productname  | string | null: false |
-| producdetail  | string | null: false |
+| producdetail  | text | null: false |
 | category | integer | null: false |
 | status   | integer | null: false   |
 | deliverycost | integer | null: false |
@@ -39,8 +39,8 @@ README修正１
 
 ### Association
 
-- belongs_to :users
-- has_one : buyers
+- belongs_to :user
+- has_one : buyer
 - has_many :comments
 
 
