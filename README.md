@@ -35,6 +35,7 @@ README修正１
 | deliveryarea | integer | null: false |
 | deliverydates | integer | null: false |
 | price     | integer | null: false |
+| user  | reference | null: false, foreign_key: true |
 | buyer | reference | null: false, foreign_key: true |
 
 ### Association
@@ -69,7 +70,7 @@ README修正１
 ### Association
 
 - belongs_to : user
-- has_one : item
+- has_many : items
 - has_one : buyers_address
 
 
@@ -78,14 +79,14 @@ README修正１
 |---------------------------------|
 | zipnumber    | string | null: false   | 
 | city         | string | null: false |
-| address      | date | null: false   |
-| buildingname | string | null: false |
+| address      | string | null: false   |
+| buildingname | string |              |
 | phonenumber  | integer | null: false |
 | buyer        | references | null: false, foreign_key: true |
 
 
 ### Association
 
-- has_one : buyer
+- belongs_to : buyer
 
 
