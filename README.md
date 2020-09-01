@@ -78,6 +78,7 @@ README修正１
 | Column   | Type   | Options     |
 |---------------------------------|
 | zipnumber    | string | null: false   | 
+| prefecture   | string | null: false   |
 | city         | string | null: false |
 | address      | string | null: false   |
 | buildingname | string |              |
