@@ -1,0 +1,2 @@
+class ItemBuyer < ApplicationRecord
+end
