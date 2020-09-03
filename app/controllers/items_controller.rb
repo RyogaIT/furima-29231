@@ -1,14 +1,15 @@
 class ItemsController < ApplicationController
   
   def index
+    @items = Item.include(:user).order("created_at DESC")
   end
 
   def new
-    @item = item.new
+    @item = Item.new
   end
 
   def create
-    @item = item.new(item_param)
+    @item = Item.new(item_param)
     if @item.save
       redirect_to item_path
     else
