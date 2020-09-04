@@ -1,0 +1,2 @@
+class Deliverycost < ApplicationRecord
+end

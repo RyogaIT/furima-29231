@@ -1,0 +1,2 @@
+class Deliveryarea < ApplicationRecord
+end
