@@ -1,16 +1,16 @@
 class Item < ApplicationRecord
-  def change
-    create_table :articles do |t|
-      t.string           :name                 ,null: false
-      t.text             :detail               ,null: false
-      t.category         :category_id          ,null: false
-      t.status           :status_id            ,null: false
-      t.deliverycost     :deliverycost_id      ,null: false
-      t.deliveryareas    :deliveryareas_id     ,null: false
-      t.deliverydates    :deliverydates_id     ,null: false
-      t.price            :price_id             ,null: false
-      
-      belongs_to :user
-      belongs_to :buyer
-      has_many :comments
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+    
+  with_options presence: true do
+         validates :name, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: "is invalid. Input full-width characters."}
+         validates :detail, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: "is invalid. Input full-width characters."}
+         validates :category_id, numericality: { other_than: 0}
+         validates :status_id, numericality: { other_than: 0}
+         validates :deliverycost_id, numericality: { other_than: 0}
+         validates :deliveryareas_id, numericality: { other_than: 0}
+         validates :deliverydates_id, numericality: { other_than: 0}
+         validates :price, numericality: {:greaer_than 0, :less_than 100000 }
+  end
 end
