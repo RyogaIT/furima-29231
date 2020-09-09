@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe Item, type: :model do
   describe '#create' do
     before do
       @item = FactoryBot.build(:item)
@@ -10,61 +10,61 @@ RSpec.describe User, type: :model do
     it "商品名が必須であること" do
       @item.name = nil
       @item.valid?
-      binding.pry
-      ickname caexpect(@item.errors.full_messages).to include("Nn't be blank")
+      expect(@item.errors.full_messages).to include("Name can't be blank")
     end
 
     it "商品の説明が必須であること" do
       @item.detail = nil
       @item.valid?
-      expect(@user.errors.full_messages).to include("Email can't be blank")
+      expect(@item.errors.full_messages).to include("Detail can't be blank")
     end
 
     it "カテゴリーの情報が必須であること" do
-      @item.category = 0
+      @item.category_id = 0
       @item.valid?
-      expect(@user.errors.full_messages).to include("Email can't be blank")
+      expect(@item.errors.full_messages).to include("Category must be other than 0")
     end
 
     it "商品の状態についての情報が必須であること" do
-      @item.status = 0
+      @item.status_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include("Email is invalid")
+      expect(@item.errors.full_messages).to include("Status must be other than 0")
     end
     it "配送料の負担についての情報が必須であること" do
-      @item.deliverycost = 0
+      @item.deliverycost_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include("Password can't be blank")
+      expect(@item.errors.full_messages).to include("Deliverycost must be other than 0")
     end
 
     it "発送元の地域についての情報が必須であること" do
-      @item.deliveryareas = 0
+      @item.deliveryareas_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+      expect(@item.errors.full_messages).to include("Deliveryareas must be other than 0")
     end
 
     it "発送までの日数についての情報が必須であること" do
-      @item.deliverydates = 0
+      @item.deliverydates_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include("Password confirmation doesn't match Password")
+      expect(@item.errors.full_messages).to include("Deliverydates must be other than 0")
     end
 
     it "価格についての情報が必須であること" do
-      @item.price = 2000
+      @item.price = nil
       @item.valid?
-      expect(@item).to be_valid
+      expect(@item.errors.full_messages).to include("Price can't be blank", "Price is not a number")
     end
 
     it "価格の範囲が、¥300~¥9,999,999の間であること" do
-      @item.price = 100;
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Firstname can't be blank", "Firstname is invalid. Input full-width characters.", "Lastname can't be blank", "Lastname is invalid. Input full-width characters.")
+      @item.price = 100
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price must be greater than 300")
     end
 
     it " 販売価格は半角数字のみ入力可能であること" do
       @item.price = "千円"
       @item.valid?
-      expect(@item.errors.full_messages).to include("Firstname is invalid. Input full-width characters.", "Lastname is invalid. Input full-width characters.")
+      binding.pry
+      expect(@item.errors.full_messages).to include("Price is not a number")
     end
 
     # it "入力された販売価格によって、非同期的に販売手数料や販売利益が変わること(JavaScriptを使用して実装すること)" do
