@@ -41,7 +41,7 @@ README修正１
 ### Association
 
 - belongs_to :user
-- belongs_to : buyer
+- belongs_to : item_buyer
 - has_many :comments
 
 
