@@ -1,7 +1,5 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   belongs_to :user
 #  belongs_to :buyer
 #  has_many :comments
@@ -17,10 +15,8 @@ class Item < ApplicationRecord
 
     
   with_options presence: true do
-        validates :name
-        # , format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: "is invalid. Input full-width characters."}
+         validates :name
          validates :detail
-        #  , format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: "is invalid. Input full-width characters."}
          validates :category_id, numericality: { other_than: 0}
          validates :status_id, numericality: { other_than: 0}
          validates :deliverycost_id, numericality: { other_than: 0}
