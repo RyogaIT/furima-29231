@@ -4,7 +4,6 @@ RSpec.describe Item, type: :model do
   describe '#create' do
     before do
       @item = FactoryBot.build(:item)
-    
     end
 
     it "商品名が必須であること" do
@@ -37,15 +36,15 @@ RSpec.describe Item, type: :model do
     end
 
     it "発送元の地域についての情報が必須であること" do
-      @item.deliveryareas_id = 0
+      @item.deliveryarea_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include("Deliveryareas must be other than 0")
+      expect(@item.errors.full_messages).to include("Deliveryarea must be other than 0")
     end
 
     it "発送までの日数についての情報が必須であること" do
-      @item.deliverydates_id = 0
+      @item.deliverydate_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include("Deliverydates must be other than 0")
+      expect(@item.errors.full_messages).to include("Deliverydate must be other than 0")
     end
 
     it "価格についての情報が必須であること" do
@@ -63,7 +62,6 @@ RSpec.describe Item, type: :model do
     it " 販売価格は半角数字のみ入力可能であること" do
       @item.price = "千円"
       @item.valid?
-      binding.pry
       expect(@item.errors.full_messages).to include("Price is not a number")
     end
 
