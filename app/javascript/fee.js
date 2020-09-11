@@ -5,7 +5,7 @@ function calc() {
   const fee = document.getElementById("add-tax-price")
   const profit = document.getElementById("profit")
 
-
+  // console.log(price)
   price.addEventListener('keyup', function(){
 
     const price_value = price.value;
