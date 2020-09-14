@@ -7,27 +7,27 @@
       <%= "商品名" %>
     </h2>
     <div class='item-img-content'>
-      <%= image_tag "item-sample.png" ,class:"item-box-img" %>
+      <%= image_tag @item.image ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
       <div class='sold-out'>
         <span>Sold Out!!</span>
       </div>
       <%# //商品が売れている場合は、sold outを表示しましょう %>
     </div>
-    <div class="item-price-box">
+     <div class="item-price-box">
       <span class="item-price">
-        ¥ 999,999,999
+        <%= @item.price %>
       </span>
       <span class="item-postage">
         (税込) 送料込み
       </span>
-    </div>
+    </div> %>
 
     <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
-    <% if user_signed_in? && current_user.id == item.user_id %>
-    <%= link_to '商品の編集', edit_item_path(item.id), method: :get, class: "item-red-btn" %>
+    <% if user_signed_in? && current_user.id == @item.user_id %>
+    <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
     <p class='or-text'>or</p>
-    <%= link_to '削除', item_path(item.id), method: :delete, class:'item-destroy' %>
+    <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
     <% end %>
     
     <%# <% if @item.item_buyer != nil %> 
@@ -37,35 +37,35 @@
     <%# <% end %>
 
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
-    <% if user_signed_in? && current_user.id != item.user_id %>
+    <% if user_signed_in? && current_user.id != @item.user_id %>
     <div class="item-explain-box">
-      <span><%= "商品説明" %></span>
+      <span><%= @item.detail %></span>
     </div>
     <table class="detail-table">
       <tbody>
         <tr>
           <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= item.name %></td>
+          <td class="detail-value"><%= @item.name %></td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= item.catrgory %></td>
+          <td class="detail-value"><%= @item.category %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= item.status %></td>
+          <td class="detail-value"><%= @item.status %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= item.deliverycost %></td>
+          <td class="detail-value"><%= @item.deliverycost %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= item.deliveryarea %></td>
+          <td class="detail-value"><%= @item.deliveryarea %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= item.deliverydate %></td>
+          <td class="detail-value"><%= @item.deliverydate %></td>
         </tr>
       </tbody>
     </table>
