@@ -37,7 +37,7 @@
     <%# <% end %>
 
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
-    <% if (user_signed_in? && current_user.id != @item.user_id) || !user_signed_in?%>
+    <%# <% if (user_signed_in? && current_user.id != @item.user_id) || !user_signed_in?%>
     <div class="item-explain-box">
       <span><%= @item.detail %></span>
     </div>
@@ -79,7 +79,7 @@
         <span>不適切な商品の通報</span>
       </div>
     </div>
-    <% end %>
+    <%# <% end %>
   </div>
   <%# /商品の概要 %>
 
