@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, only: [:new]
   
   def index
     @items = Item.all.order("created_at DESC")
@@ -17,6 +18,12 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+
+  def show
+    @item = Item.find(params[:id])
+  end
+
+  
 
   def item_param
     params.require(:item).permit(:image, :name, :detail, :category_id, :status_id, :deliverycost_id,
