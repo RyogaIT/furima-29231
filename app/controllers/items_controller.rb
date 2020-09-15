@@ -25,9 +25,13 @@ class ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
+    if item.valid?
     item.destroy
     redirect_to root_path
-   end
+    else
+      render :show
+    end
+  end
 
   def item_param
     params.require(:item).permit(:image, :name, :detail, :category_id, :status_id, :deliverycost_id,
