@@ -37,7 +37,7 @@
     <%# <% end %>
 
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
-    <% if user_signed_in? && current_user.id != @item.user_id %>
+    <% if (user_signed_in? && current_user.id != @item.user_id) || !user_signed_in?%>
     <div class="item-explain-box">
       <span><%= @item.detail %></span>
     </div>
@@ -49,23 +49,23 @@
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= @item.category %></td>
+          <td class="detail-value"><%= @item.category.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= @item.status %></td>
+          <td class="detail-value"><%= @item.status.name %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= @item.deliverycost %></td>
+          <td class="detail-value"><%= @item.deliverycost.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= @item.deliveryarea %></td>
+          <td class="detail-value"><%= @item.deliveryarea.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= @item.deliverydate %></td>
+          <td class="detail-value"><%= @item.deliverydate.name %></td>
         </tr>
       </tbody>
     </table>
