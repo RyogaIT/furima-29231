@@ -27,10 +27,13 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item.update.(item_param)
+    if @item.update(item_params)
+       redirect_to root_path
+    else
+      render :edit
+    end
   end
-
-
+  
   def destroy
     if item.valid?
     item.destroy
@@ -40,12 +43,12 @@ class ItemsController < ApplicationController
     end
   end
 
-  def item_param
+  private
+ 
+  def item_params
     params.require(:item).permit(:image, :name, :detail, :category_id, :status_id, :deliverycost_id,
     :deliveryarea_id, :deliverydate_id, :price).merge(user_id: current_user.id)
   end
-
-  def 
 
   def set_item
     item = Item.find(params[:id]) 
