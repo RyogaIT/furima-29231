@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
   end
   
   def destroy
-    if item.destroy
+    if @item.destroy
     redirect_to root_path
     else
       render :show
@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
   end
 
   def set_item
-    item = Item.find(params[:id]) 
+    @item = Item.find(params[:id]) 
   end
 
 end
