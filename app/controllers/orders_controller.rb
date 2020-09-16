@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   def index
+   @itemimage = Item.image
+   @itemprice = Item.price
   end
 
   def create
@@ -8,7 +10,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:price, :token)
+    params.permit(:@itemprice, :token)
   end
   
 end
