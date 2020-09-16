@@ -1,8 +1,8 @@
 class CreateBuyerAddresses < ActiveRecord::Migration[6.0]
   def change
     create_table :buyer_addresses do |t|
-      t.string :zipnumber, false, default: ""
-      t.string :prefecture, null: false
+      t.string :zipnumber, false
+      t.string :prefecture_id, null: false
       t.string :city, null: false
       t.string :address, null: false
       t.integer :buildingname, null: false

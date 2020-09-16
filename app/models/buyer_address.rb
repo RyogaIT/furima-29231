@@ -6,6 +6,7 @@ class BuyerAddress < ApplicationRecord
 
   with_options presence: true do
     validates :zipnumber, format: { with: /\A[0-9]+\z/, message: "is invalid. Input full-width characters."}
+    validates :prefecture_id, numericality: { other_than: 0}
     validates :city, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "is invalid. Input full-width characters."}
     validates :address, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "is invalid. Input full-width characters."}
     validates :buildingname, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "is invalid. Input full-width characters."}
