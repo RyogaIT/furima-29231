@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
 
   def url_profibit
     @item = Item.find(params[:item_id])
-    if @item.item_buyer.present?
+    if @item.item_buyer.present? || @item.user_id == current_user.id
        redirect_to root_path
     end
   end
