@@ -21,21 +21,20 @@ RSpec.describe Item, type: :model do
     end
 
     it "市の情報が必須であること" do
-      @item_address.city = nill
+      @item.city = nil
       @item.valid?
-      binding.pry
-      expect(@item.errors.full_messages).to include("Category must be other than 0")
+      expect(@item.errors.full_messages).to include("City can't be blank")
     end
 
     it "町についての情報が必須であること" do
-      @item_address.address = nil
+      @item.address = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Status must be other than 0")
+      expect(@item.errors.full_messages).to include("Address can't be blank")
     end
     it "電話番号の情報が必須であること" do
-      @item_address.phonenumber = nil
+      @item.phonenumber = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Deliverycost must be other than 0")
+      expect(@item.errors.full_messages).to include("Phonenumber can't be blank", "Phonenumber is invalid. Input full-width characters.")
     end
 
    
