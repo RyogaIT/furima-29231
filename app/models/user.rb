@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :items
+  has_one :item_buyer
     
   with_options presence: true do
          validates :nickname, format: { with: /\A[a-zA-Z0-9]+\z/, message: "is invalid. Input full-width characters."}
