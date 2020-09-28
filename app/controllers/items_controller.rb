@@ -11,13 +11,14 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_param)
+    @item = Item.new(item_params)
     if @item.valid?
        @item.save
       return redirect_to root_path
     else
       render :new
     end
+
   end
 
   def show

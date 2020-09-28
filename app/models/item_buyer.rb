@@ -1,5 +1,5 @@
 class ItemBuyer < ApplicationRecord
-  has_many :users
-  has_many :items
+  belongs_to :user
+  belongs_to :item
   has_one :buyer_address
 end
