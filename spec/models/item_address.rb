@@ -14,6 +14,13 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Zipnumber can't be blank", "Zipnumber is invalid. Input full-width characters.")
     end
 
+    it "住所にハイフンがない場合に購入ができないこと" do
+      @item.zipnumber = "12345678"
+      @item.valid?
+      binding.pry
+      expect(@item.errors.full_messages).to include("Zipnumber is invalid. Input full-width characters.", "Phonenumber is invalid. Input full-width characters.")
+    end
+
     it "出品値のidが必須であること" do
       @item.deliveryarea_id = 0
       @item.valid?
