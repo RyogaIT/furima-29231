@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
   before_action :set_item, only: [:index, :create]
-  before_action :url_profibit: 
+  before_action :url_profibit
 
   def index
     @order = ItemAddress.new
@@ -22,13 +22,14 @@ class OrdersController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
+  end
 
   def order_params
     params.require(:item_address).permit(:zipnumber, :deliveryarea_id, :city, :address, :buildingname, :phonenumber).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
   end
 
   def pay_item
-    Payjp.api_key = "sk_test_7f6f48a0ad2c29cced5acba1"
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,
       card: order_params[:token],
@@ -38,8 +39,8 @@ class OrdersController < ApplicationController
 
   def url_profibit
     @item = Item.find(params[:item_id])
-    if @item.order.present?
-      redirect_to root_path
+    if @item.item_buyer.present?
+       redirect_to root_path
     end
   end
   

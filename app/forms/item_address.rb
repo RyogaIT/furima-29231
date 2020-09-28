@@ -9,7 +9,7 @@ class ItemAddress
     validates :city
     validates :address
     validates :phonenumber,length: {maximum: 11}
-　　 validates :token
+    validates :token
   end
 
 
