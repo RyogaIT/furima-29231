@@ -44,6 +44,12 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Phonenumber can't be blank", "Phonenumber is invalid. Input full-width characters.")
     end
 
+    it "電話番号はハイフンを含まず、11桁以内でないと購入できないこと" do
+      @item.phonenumber = "090-12345678"
+      @item.valid?
+      expect(@item.errors.full_messages).to include(["Zipnumber is invalid. Input full-width characters.", "Phonenumber is invalid. Input full-width characters.")
+    end
+
    
 
     # it "入力された販売価格によって、非同期的に販売手数料や販売利益が変わること(JavaScriptを使用して実装すること)" do
