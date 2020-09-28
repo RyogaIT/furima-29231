@@ -8,7 +8,7 @@ class ItemAddress
     validates :deliveryarea_id, numericality: { other_than: 0}
     validates :city
     validates :address
-    validates :phonenumber, format: { with: /\A[0-9]+\z/, message: "is invalid. Input full-width characters."}
+    validates :phonenumber, format: { with: /\A[0-11]+\z/, message: "is invalid. Input full-width characters."}
 　　 validates :token
   end
 
