@@ -1,13 +1,12 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
+  before_action :set_item, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @order = ItemAddress.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order = ItemAddress.new(order_params)
     # binding.pry
     if @order.valid?
@@ -20,6 +19,9 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def set_item
+    @item = Item.find(params[:item_id])
 
   def order_params
     params.require(:item_address).permit(:zipnumber, :deliveryarea_id, :city, :address, :buildingname, :phonenumber).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
