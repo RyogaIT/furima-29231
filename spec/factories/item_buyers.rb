@@ -3,6 +3,6 @@ FactoryBot.define do
     association :user
     association :item
 
-    token :qqqqk
+    
   end
 end
