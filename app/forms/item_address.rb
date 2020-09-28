@@ -9,7 +9,8 @@ class ItemAddress
     validates :city
     validates :address
     validates :phonenumber, format: { with: /\A[0-9]+\z/, message: "is invalid. Input full-width characters."}
-end
+　　 validates :token
+  end
 
 
 def save
