@@ -47,7 +47,15 @@ RSpec.describe Item, type: :model do
     it "電話番号はハイフンを含まず、11桁以内でないと購入できないこと" do
       @item.phonenumber = "090-12345678"
       @item.valid?
-      expect(@item.errors.full_messages).to include(["Zipnumber is invalid. Input full-width characters.", "Phonenumber is invalid. Input full-width characters.")
+      binding.pry
+      expect(@item.errors.full_messages).to include("Zipnumber is invalid. Input full-width characters.")
+    end
+
+    it "tokenが空では購入ができないことについてのテストを追加しましょう。" do
+      token = nil
+      token.valid?
+      binding.pry
+      expect(@item.errors.full_messages).to include("Zipnumber is invalid. Input full-width characters.", "Phonenumber is invalid. Input full-width characters.")
     end
 
    
