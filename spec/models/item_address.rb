@@ -40,19 +40,23 @@ RSpec.describe Item, type: :model do
     it "電話番号の情報が必須であること" do
       @item.phonenumber = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Phonenumber can't be blank", "Phonenumber is invalid. Input full-width characters.")
+      expect(@item.errors.full_messages).to include("Phonenumber can't be blank")
     end
 
     it "電話番号はハイフンを含まず、11桁以内でないと購入できないこと" do
       @item.phonenumber = "090-12345678"
       @item.valid?
-      expect(@item.errors.full_messages).to include("Zipnumber is invalid. Input full-width characters.")
+      expect(@item.errors.full_messages).to include("Phonenumber is too long (maximum is 11 characters)")
     end
 
     it "tokenが空では購入ができないことについてのテストを追加しましょう。" do
       @item.token = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Token can't be blank")
+    end
+
+    it "正常に購入ができる場合" do
+      expect(@item).to be_valid
     end
 
    
